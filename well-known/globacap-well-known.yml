@@ -1,0 +1,105 @@
+generated: '2026-08-22'
+method: probed
+source: 'Direct anonymous HTTP probes of /.well-known/* on every Globacap host resolved
+  via DNS brute-force (crt.sh was returning HTTP 502 during this run).'
+note: >-
+  One real hit. login.globacap.com is Globacap''s own hostname for its Kinde-hosted
+  identity provider and serves a genuine OpenID Connect discovery document whose
+  "issuer" is https://login.globacap.com — the only machine-readable document
+  Globacap publishes anonymously. Everything else missed. globacap.com is now a
+  single-page static S3/CloudFront site that answers every path other than "/" and
+  the three policy pages with an S3 AccessDenied (HTTP 403, application/xml).
+  trust.globacap.com answers HTTP 200 with the SAME 4,261-byte Vanta single-page-app
+  shell for every /.well-known/* path — an SPA catch-all, NOT a document, and it is
+  recorded here as a miss. investor.globacap.com and console.globacap.com sit behind
+  an oauth2-proxy that 302s every path to /oauth2/start.
+hosts:
+- host: login.globacap.com
+  note: Kinde-hosted IdP on a Globacap-controlled hostname; issuer self-declares as https://login.globacap.com.
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: globacap-login-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    note: Byte-identical to the OpenID Connect discovery document above; not saved twice.
+  - path: /.well-known/jwks
+    status: 200
+    content_type: application/json
+    file: globacap-login-jwks.json
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: globacap.com
+  note: Static S3/CloudFront acquisition-announcement page; all other paths return an S3 AccessDenied XML body.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/ai-plugin.json
+    status: 403
+- host: trust.globacap.com
+  note: >-
+    Vanta Trust Center. Every path returns HTTP 200 with an identical 4,261-byte HTML
+    SPA shell, so none of these is a served document. Recorded as a miss, not a hit.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    served_document: false
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: text/html
+    served_document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: text/html
+    served_document: false
+  - path: /.well-known/api-catalog
+    status: 200
+    content_type: text/html
+    served_document: false
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    content_type: text/html
+    served_document: false
+- host: investor.globacap.com
+  note: Application host fronted by oauth2-proxy; every path 302s to /oauth2/start.
+  documents:
+  - path: /.well-known/security.txt
+    status: 302
+  - path: /.well-known/openid-configuration
+    status: 302
+  - path: /.well-known/oauth-authorization-server
+    status: 302
+  - path: /.well-known/api-catalog
+    status: 302
+  - path: /.well-known/ai-plugin.json
+    status: 302
+- host: console.globacap.com
+  note: Application host fronted by oauth2-proxy; every path 302s to /oauth2/start.
+  documents:
+  - path: /.well-known/security.txt
+    status: 302
+  - path: /.well-known/openid-configuration
+    status: 302
+  - path: /.well-known/oauth-authorization-server
+    status: 302
+  - path: /.well-known/api-catalog
+    status: 302
+  - path: /.well-known/ai-plugin.json
+    status: 302
+security_txt: false
+api_catalog: false

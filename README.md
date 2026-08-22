@@ -64,5 +64,17 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Globacap is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.hiive.com/securities/globacap-stock
+Globacap is a London-based private capital markets technology company, founded in 2017, that builds
+workflow-automation software-as-a-service for issuance, share register management, ongoing
+administration, transferability and settlement of private securities. In November 2025 Apex Group
+agreed to acquire the company; the change of control completed in early 2026.
+
+**Coverage: no developer program.** Globacap publishes no public API, OpenAPI/AsyncAPI/GraphQL
+contract, SDK, developer portal or API reference, and never has (`api.`, `developer.` and `docs.`
+subdomains are NXDOMAIN and absent from the Wayback index). As of 2026-08-22 `globacap.com` has been
+reduced to a single acquisition-announcement page; product and news paths return HTTP 403. The one
+machine-readable document Globacap serves anonymously is its OpenID Connect discovery document at
+`https://login.globacap.com/.well-known/openid-configuration`, captured in `well-known/`.
+
+- https://globacap.com/
+- https://www.apexgroup.com/ (parent company)

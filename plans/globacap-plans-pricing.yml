@@ -1,0 +1,17 @@
+generated: '2026-08-22'
+method: searched
+source: >-
+  https://globacap.com/ (HTTP 200) — the only remaining marketing page; probes of
+  https://globacap.com/pricing/ and https://globacap.com/products/register/ both
+  return HTTP 403 (S3 AccessDenied).
+plans: []
+plan_count: 0
+pricing_model: enterprise-contact-only
+note: >-
+  Globacap publishes no plans, tiers, quotas or list prices. It sells
+  workflow-automation software to securities exchanges, securities firms, private
+  banks and asset managers under negotiated contracts; the surviving public page
+  offers a single named contact email and no commercial detail. The pricing pages
+  that once existed on globacap.com were removed when the site collapsed to the Apex
+  Group acquisition announcement. No Pricing pointer is emitted because there is no
+  live pricing page to point at.

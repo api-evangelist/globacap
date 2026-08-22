@@ -1,0 +1,77 @@
+generated: '2026-08-22'
+method: probed
+source: https://login.globacap.com/.well-known/openid-configuration
+scope_of_this_artifact: >-
+  This describes the identity provider Globacap runs for its own platform
+  applications (investor.globacap.com, console.globacap.com). Globacap publishes no
+  public API reference and no machine-readable API contract, so there are no
+  documented API securitySchemes to derive from. Everything below is read verbatim
+  from the anonymous OpenID Connect discovery document served on Globacap's own
+  hostname; nothing is inferred.
+identity_provider:
+  issuer: https://login.globacap.com
+  vendor: Kinde
+  vendor_evidence: login.globacap.com CNAMEs to eu.kinde.com
+  hostname_owned_by_provider: true
+schemes:
+- type: openIdConnect
+  name: globacap-oidc
+  discovery_url: https://login.globacap.com/.well-known/openid-configuration
+  jwks_uri: https://login.globacap.com/.well-known/jwks
+  authorization_endpoint: https://login.globacap.com/oauth2/auth
+  token_endpoint: https://login.globacap.com/oauth2/token
+  userinfo_endpoint: https://login.globacap.com/oauth2/v2/user_profile
+  revocation_endpoint: https://login.globacap.com/oauth2/revoke
+  introspection_endpoint: https://login.globacap.com/oauth2/introspect
+  end_session_endpoint: https://login.globacap.com/logout
+  grant_types:
+  - authorization_code
+  - implicit
+  - hybrid
+  response_types_supported:
+  - code
+  - token
+  - id_token
+  - code token
+  - code id_token
+  - id_token token
+  - code id_token token
+  response_modes_supported:
+  - form_post
+  - query
+  - fragment
+  pkce:
+    supported: true
+    code_challenge_methods:
+    - S256
+  id_token_signing_alg_values_supported:
+  - RS256
+  token_endpoint_auth_methods_supported:
+  - client_secret_post
+  subject_types_supported:
+  - public
+  claims_supported:
+  - aud
+  - exp
+  - iat
+  - iss
+  - sub
+  scopes_supported:
+  - address
+  - email
+  - offline
+  - openid
+  - phone
+  - profile
+  request_uri_parameter_supported: false
+edge_enforcement:
+- host: investor.globacap.com
+  mechanism: oauth2-proxy
+  evidence: 'Every path 302s to /oauth2/start?supports_reauth=true&rd=<path>; /api/* returns HTTP 401 with an empty JSON body.'
+- host: console.globacap.com
+  mechanism: oauth2-proxy
+  evidence: Every path 302s to /oauth2/start.
+gaps:
+- No public API authentication documentation exists; Globacap does not publish a developer portal or API reference.
+- Machine-to-machine / client_credentials support is not advertised in the discovery document.
+- No /.well-known/oauth-protected-resource (HTTP 404), so no RFC 9728 resource-server metadata.

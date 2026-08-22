@@ -1,0 +1,31 @@
+generated: '2026-08-22'
+method: searched
+source: >-
+  npm registry search (registry.npmjs.org/-/v1/search?text=globacap), PyPI
+  (pypi.org/pypi/globacap/json -> 404), RubyGems
+  (rubygems.org/api/v1/gems/globacap.json -> 404), crates.io search (0 results),
+  GitHub org api.github.com/orgs/Globacap/repos, and globacap.com.
+packages: []
+package_count: 0
+official_sdk_count: 0
+note: >-
+  No first-party Globacap client library exists on any public registry. The npm
+  search for "globacap" returns one unrelated package ("tomtestdesign2"). PyPI,
+  RubyGems and crates.io have no matching package. Globacap''s GitHub organisation
+  (github.com/Globacap, verified, created 2017-12-11) has exactly ONE public
+  repository — a fork of oauth2-proxy — which is infrastructure Globacap runs, not a
+  client SDK it publishes. Consistent with the absence of any public developer
+  program. No SDKs pointer is emitted.
+github_org:
+  url: https://github.com/Globacap
+  verified: true
+  public_repos: 1
+  repos:
+  - name: oauth2-proxy
+    url: https://github.com/Globacap/oauth2-proxy
+    language: Go
+    first_party_sdk: false
+    kind: fork of oauth2-proxy/oauth2-proxy
+    version: null
+    published: null
+    note: Fork of an upstream open-source reverse proxy; not published to any package registry, so there is no registry version or release date to read.

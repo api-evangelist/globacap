@@ -1,0 +1,52 @@
+generated: '2026-08-22'
+method: searched
+source: >-
+  https://globacap.com/ (HTTP 200, acquisition announcement, last-modified
+  2026-02-13); coindesk.com/business/2025/11/19 and ledgerinsights.com coverage of
+  the Apex Group acquisition; direct probes of globacap.com,
+  investor.globacap.com and console.globacap.com.
+api_versioning:
+  scheme: unknown
+  note: No public API contract or reference to read a versioning scheme from.
+deprecation_policy:
+  published: false
+  sunset_header: unknown
+  note: No deprecation or sunset policy is published. No Deprecation pointer emitted.
+status_page:
+  published: false
+  probed:
+  - url: https://status.globacap.com/
+    result: NXDOMAIN
+  note: No status page found. No StatusPage pointer emitted.
+sla:
+  published: false
+  note: No public SLA. Commercial terms sit behind https://globacap.com/terms-conditions/ (Customer Terms of Service, Liquidity Terms and Conditions, Placement Terms of Service).
+corporate_lifecycle:
+  status: acquired
+  acquirer: Apex Group
+  acquirer_url: https://www.apexgroup.com/
+  announced: '2025-11'
+  completed: '2026'
+  evidence: >-
+    globacap.com now serves a single page titled "Globacap - Acquired by Apex Group"
+    stating "Globacap technology becomes part of Apex Group ... including its
+    broker-dealer and ATS", and that Apex is combining Globacap and Tokeny in a
+    digital initiative. The page''s only outbound calls to action are an email
+    address and a link to apexgroup.com.
+  note: >-
+    Globacap continues to operate as a technology platform inside Apex Group; this is
+    an acquisition, not a shutdown. Its application hosts are still live and
+    authenticating (investor.globacap.com, console.globacap.com,
+    login.globacap.com).
+public_surface_reduction:
+  observed: true
+  detail: >-
+    The marketing site has been collapsed to one static S3/CloudFront page. Product
+    pages that existed as recently as 2026 — /products/register/,
+    /products/liquidity/, /exchanges-intermediaries/, /news/ — now return HTTP 403
+    with an S3 AccessDenied XML body, as do /robots.txt and /sitemap.xml. Only "/",
+    /terms-conditions/, /privacy-policy/ and /cookie-policy/ still resolve.
+  implication: >-
+    Any future artifact harvest for Globacap should target Apex Group''s surface, not
+    globacap.com. This profile records the state of the Globacap-branded surface as
+    of 2026-08-22.

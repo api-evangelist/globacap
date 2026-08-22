@@ -1,0 +1,38 @@
+generated: '2026-08-22'
+method: probed
+source: https://login.globacap.com/.well-known/openid-configuration
+docs: null
+note: >-
+  These are the scopes the Globacap identity provider advertises in its anonymous
+  OpenID Connect discovery document. They are the standard OIDC scope set — Globacap
+  publishes no API-specific or product-specific permission reference, and no
+  scopes/permissions documentation page exists to enrich this from. Do not read this
+  as an API authorization model; it is the login surface only.
+issuer: https://login.globacap.com
+flows:
+- type: authorization_code
+  authorization_url: https://login.globacap.com/oauth2/auth
+  token_url: https://login.globacap.com/oauth2/token
+  pkce_required_methods:
+  - S256
+scopes:
+- name: openid
+  description: Standard OIDC scope requesting an ID token.
+  standard: true
+- name: profile
+  description: Standard OIDC scope for basic profile claims.
+  standard: true
+- name: email
+  description: Standard OIDC scope for the email claim.
+  standard: true
+- name: phone
+  description: Standard OIDC scope for the phone_number claim.
+  standard: true
+- name: address
+  description: Standard OIDC scope for the address claim.
+  standard: true
+- name: offline
+  description: Requests a refresh token for offline access.
+  standard: true
+scope_count: 6
+product_specific_scopes: 0

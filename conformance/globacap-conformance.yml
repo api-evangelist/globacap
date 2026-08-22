@@ -1,0 +1,61 @@
+generated: '2026-08-22'
+method: probed
+source: >-
+  https://login.globacap.com/.well-known/openid-configuration (probed 2026-08-22);
+  plus negative probes across globacap.com, investor.globacap.com,
+  console.globacap.com, trust.globacap.com.
+note: >-
+  Globacap publishes no OpenAPI/AsyncAPI/GraphQL SDL/WSDL/proto, so every
+  contract-derived conformance assertion below is scoped to the one machine-readable
+  document it does serve: the OpenID Connect discovery document on its own login
+  hostname. Nothing is claimed from marketing prose.
+conformance:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    https://login.globacap.com/.well-known/oauth-authorization-server returns HTTP
+    200 with authorization_endpoint, token_endpoint, revocation_endpoint and
+    introspection_endpoint.
+- id: oidc
+  conforms: true
+  evidence: >-
+    https://login.globacap.com/.well-known/openid-configuration returns HTTP 200
+    with issuer https://login.globacap.com, jwks_uri, userinfo_endpoint,
+    end_session_endpoint and the standard OIDC scope set.
+- id: pkce
+  conforms: true
+  evidence: 'code_challenge_methods_supported: ["S256"] in the discovery document.'
+- id: rfc9728-oauth-protected-resource
+  conforms: false
+  evidence: https://login.globacap.com/.well-known/oauth-protected-resource returns HTTP 404.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: >-
+    /.well-known/security.txt returns HTTP 404 on login.globacap.com and HTTP 403
+    (S3 AccessDenied) on globacap.com.
+- id: rfc9457-problem-details
+  conforms: unknown
+  evidence: >-
+    No public API contract or error reference to read. investor.globacap.com/api/*
+    returns HTTP 401 with an empty JSON body ("{}"), which carries no problem+json
+    envelope, but this is the oauth2-proxy edge response and not necessarily the
+    application''s own error shape.
+- id: pagination
+  conforms: unknown
+  evidence: No public contract or docs.
+- id: idempotency
+  conforms: unknown
+  evidence: No public contract or docs.
+domain_standards:
+  regime: securities_market_data
+  shortlist_probed:
+  - fix-protocol
+  - mifid-ii
+  - iso-20022
+  observed: []
+  note: >-
+    REWARD-ONLY, and nothing was awarded. Globacap operates in private capital
+    markets, where FIX, MiFID II reporting shapes and ISO 20022 message types are the
+    standards a contract could declare. None could be checked for, because there is
+    no published contract to inspect — this is an absence of evidence, not evidence
+    that Globacap does not speak these standards internally.

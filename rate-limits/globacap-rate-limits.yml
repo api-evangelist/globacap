@@ -1,0 +1,17 @@
+generated: '2026-08-22'
+method: searched
+source: >-
+  Negative search: no developer portal, API reference or docs host exists
+  (api./developer./docs.globacap.com are all NXDOMAIN, and the Wayback CDX index
+  shows they never existed). knowledge.globacap.com redirects to a sign-in-restricted
+  Zendesk help centre.
+rate_limits: []
+limit_count: 0
+response_headers: []
+exhaustion_status: null
+note: >-
+  No rate limits are documented anywhere public, because no API is documented
+  anywhere public. The only live API surface found — https://investor.globacap.com/api/*
+  — returns HTTP 401 with an empty JSON body to anonymous callers and emits no
+  RateLimit-*, X-RateLimit-* or Retry-After headers on that response, so nothing can
+  be observed at the edge either. An honest zero.

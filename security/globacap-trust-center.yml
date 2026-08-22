@@ -1,0 +1,26 @@
+generated: '2026-08-22'
+method: probed
+source: https://trust.globacap.com/
+trust_center:
+  present: true
+  url: https://trust.globacap.com/
+  vendor: Vanta
+  vendor_evidence: >-
+    The page is served from Vanta''s trust-report application (assets.vanta.com
+    bundles, data-slugid="eda5lcia16p2rw5tcp3wi") and sets
+    <link rel="canonical" href="https://trust.globacap.com">, which is only emitted
+    for a configured custom trust-center domain.
+  http_status: 200
+certifications: []
+certifications_note: >-
+  NONE RECORDED — and that is a measurement, not an omission. The trust center is a
+  client-side React single-page app: the anonymous HTML response is a 4,261-byte
+  shell containing no certification names, and the same shell is returned for every
+  path on the host. Vanta''s data APIs (api.vanta.com/v1/trust-pages/<slug>,
+  /v1/trust-center/<slug>) return HTTP 401 anonymously and its GraphQL endpoint has
+  been retired (HTTP 410). A targeted web search for Globacap SOC 2 / ISO 27001
+  returned no primary source. No certification is asserted here because none could
+  be read from a public, machine-readable surface. Do NOT emit a Compliance pointer
+  from this file.
+subprocessors_page: null
+requires_nda: unknown
