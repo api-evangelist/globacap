@@ -11,6 +11,17 @@ description: Globacap is a London-based private capital markets technology compa
   now sits inside Apex Group's digital/tokenisation initiative alongside Tokeny. As of this profile the
   public globacap.com site has been reduced to a single acquisition announcement page and Globacap publishes
   no public developer program, API reference or machine-readable API contract.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://globacap.com/globacap-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/globacap/refs/heads/main/apis.yml
 x-type: company
