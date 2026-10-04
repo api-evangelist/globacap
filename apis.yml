@@ -52,7 +52,7 @@ tags:
 - Private Capital Markets
 - Capital Markets
 - Securities
-- Financial-Services
+- Financial Services
 - Fintech
 - Tokenization
 - Share Register
@@ -69,6 +69,7 @@ tags_raw:
 - Share Register
 - Secondary Markets
 - United Kingdom
+- Financial-Services
 apis: []
 maintainers:
 - FN: Kin Lane
